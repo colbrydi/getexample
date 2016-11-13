@@ -1,0 +1,19 @@
+#!/bin/bash --login
+#PBS -l nodes=1:ppn=1,walltime=00:06:00,mem=200mb
+#PBS -l feature=gbe
+#PBS -j oe
+
+# first, switch to the directory from which is qsub was submitted
+cd ${PBS_O_WORKDIR}
+
+# output information about how this job is running
+echo "This job is running on $HOSTNAME on `date`"
+# run the "hello" program in this directory
+./hello
+
+# output details
+echo "details of the job and queue"
+echo ---------
+
+qstat -f ${PBS_JOBID}
+

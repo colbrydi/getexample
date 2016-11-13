@@ -1,0 +1,29 @@
+#!/bin/bash
+#DESCRIPTION Download user examples
+#LABEL Files
+location=../share/examples/
+
+#TODO Make a list of users downloading examples?
+
+#Display help message if no example is given
+if [ "$1" == "" ]
+then
+	echo "Download an HPC example:"
+	echo "usage:"
+	echo "   getexample <examplename>"
+	echo ""
+	echo "Where <examplename> is the name of the example you want to "
+	echo "download.  This will create a directory named examplename which"
+	echo "you can cd into and hopefully read the README file (if one is"
+	echo "avaliable) or just submit the *.qsub file."
+	echo ""
+	echo "For Example:"
+	echo "  getexample helloworld"
+	echo ""
+	echo "Possible example names:"
+	ls $location 
+	exit 0
+fi
+
+#TODO Check to see if folder already exists
+cp -r -v -u ${location}/$1 .
